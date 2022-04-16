@@ -51,7 +51,7 @@ jobs:
         run: |
           cd scummvm
           #git checkout emscripten
-          git pull
+          #git pull
           git remote add upstream https://github.com/scummvm/scummvm.git
           git fetch upstream
           git rebase upstream/master
