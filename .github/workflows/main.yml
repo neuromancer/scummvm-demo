@@ -51,7 +51,7 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          git clone https://github.com/neuromancer/scummvm-demo --recursive 
+          git clone ssh://git@github.com/neuromancer/scummvm-demo.git --recursive 
           cd scummvm-demo
           cd scummvm
           git checkout emscripten
@@ -63,8 +63,8 @@ jobs:
           ./dists/emscripten/build.sh build --verbose  --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-static=hypno --bundle-games=sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip"
           cp build-emscripten/scummvm.html build-emscripten/index.html
           cd ..
+          pwd
           ls
-          cd scummvm-demo
 
       - name: Deploy Demo 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
