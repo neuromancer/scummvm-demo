@@ -49,6 +49,8 @@ jobs:
 
       - name: Build ScummVM 🔧
         run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
           git clone https://github.com/neuromancer/scummvm-demo --recursive 
           cd scummvm-demo
           cd scummvm
