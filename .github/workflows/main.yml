@@ -45,7 +45,7 @@ jobs:
         run: |
           cd scummvm-icons
           python3 gen-set.py
-          cp gui-icons-*.dat ../scummvm/icons
+          cp gui-icons-*.dat ../scummvm/gui/themes/gui-icons.dat
           cd ..
 
       - name: Build ScummVM 🔧
