@@ -23,11 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-          lfs: true
+      #- name: Checkout 🛎️
+      #  uses: actions/checkout@v2
+      #  with:
+      #    submodules: true
+      #    lfs: true
                 
       #- name: Cache scummvm 
       #  uses: actions/cache@v2
@@ -49,9 +49,10 @@ jobs:
 
       - name: Build ScummVM 🔧
         run: |
+          git clone https://github.com/neuromancer/scummvm-demo --recursive 
           cd scummvm
-          #git checkout emscripten
-          #git pull
+          git checkout emscripten
+          git pull
           git remote add upstream https://github.com/scummvm/scummvm.git
           git fetch upstream
           git rebase upstream/master
