@@ -51,6 +51,10 @@ jobs:
       - name: Build ScummVM 🔧
         run: |
           cd scummvm
+          git checkout emscripten
+          git remote add upstream https://github.com/scummvm/scummvm.git
+          git fetch upstream
+          git rebase upstream/master
           ./dists/emscripten/build.sh build --verbose  --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-static=hypno --bundle-games=sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip"
           cp build-emscripten/scummvm.html build-emscripten/index.html
           cd ..
