@@ -1,0 +1,38 @@
+diff --git a/dists/emscripten/custom_shell.html b/dists/emscripten/custom_shell.html
+index 2b63fb9ae68..5ce2b34ae5c 100644
+--- a/dists/emscripten/custom_shell.html
++++ b/dists/emscripten/custom_shell.html
+@@ -254,20 +254,20 @@
+         });
+       });
+     }
+-    function setupHTTPFilesystem(folder_name) {
++    function setupHTTPFilesystem(prefix, folder_name) {
+ 
+       FS.mkdir("/" + folder_name)
+-      FS.mount(new ScummvmFS(FS, "/" + folder_name + "/"), {}, "/" + folder_name + "/");
++      FS.mount(new ScummvmFS(FS, "/" + prefix + folder_name + "/"), {}, "/" + folder_name + "/");
+     }
+     function setupFilesystem() {
+       addRunDependency('scummvm-fs-setup');
+       setupLocalFilesystem().then(() => {
+-
+-        setupHTTPFilesystem("games")
++        var prefix = "scummvm-demo/";
++        setupHTTPFilesystem(prefix, "games")
+         FS.mkdir("/plugins")
+-        FS.mount(new ScummvmFS(FS, "/plugins"), {}, "/plugins");
++        FS.mount(new ScummvmFS(FS, prefix + "plugins"), {}, "/plugins");
+         FS.mkdir("/data")
+-        FS.mount(new ScummvmFS(FS, "/data"), {}, "/data");
++        FS.mount(new ScummvmFS(FS, prefix + "data"), {}, "/data");
+ 
+         removeRunDependency('scummvm-fs-setup');
+ 
+@@ -356,4 +356,4 @@
+   {{{ SCRIPT }}}
+ </body>
+ 
+-</html>
+\ No newline at end of file
++</html>
