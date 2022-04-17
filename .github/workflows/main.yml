@@ -28,18 +28,6 @@ jobs:
         with:
           submodules: true
  
-      - name: Cache scummvm 
-        uses: actions/cache@v2
-        with:
-          path: | 
-            ./scummvm/**/*.o
-            ./scummvm/**/**/*.o
-            ./scummvm/**/**/**/*.o
-            ./scummvm/**/**/**/**/*.o
-            ./scummvm/**/**/**/**/**/*.o
-            ./scummvm/**/**/**/**/**/**/*.o
-          key: scummvm-cache
-
       - name: Checkout icons 🛎️
         uses: actions/checkout@v2
         with:
@@ -52,7 +40,7 @@ jobs:
           python3 gen-set.py
           cd ..
 
-      - name: Rebase and Build ScummVM 🔧
+      - name: Rebase ScummVM 🔧
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
@@ -61,6 +49,21 @@ jobs:
           git remote add upstream https://github.com/scummvm/scummvm.git
           git fetch upstream
           git rebase upstream/master
+
+      - name: Restore ScummVM cache
+        uses: actions/cache@v2
+        with:
+          path: | 
+            ./scummvm-to-rebase/**/*.o
+            ./scummvm-to-rebase/**/**/*.o
+            ./scummvm-to-rebase/**/**/**/*.o
+            ./scummvm-to-rebase/**/**/**/**/*.o
+            ./scummvm-to-rebase/**/**/**/**/**/*.o
+            ./scummvm-to-rebase/**/**/**/**/**/**/*.o
+          key: scummvm-cache
+
+       - name: Build ScummVM
+         run: |
           cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat
           ./dists/emscripten/build.sh build --verbose  --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-dynamic=hypno --bundle-games=,sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip"
           cp build-emscripten/scummvm.html build-emscripten/index.html
