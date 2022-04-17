@@ -55,7 +55,6 @@ jobs:
           git remote add upstream https://github.com/scummvm/scummvm.git
           git fetch upstream
           git rebase upstream/master
-          git apply ../prefix.diff
           cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat
           ./dists/emscripten/build.sh build --verbose  --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-static=hypno --bundle-games="https://github.com/neuromancer/scummvm-demo/releases/download/demos/sinistersix-dos-demo-en.zip","https://github.com/neuromancer/scummvm-demo/releases/download/demos/wetlands-dos-demo1-en.zip","https://github.com/neuromancer/scummvm-demo/releases/download/demos/wetlands-dos-demo2-en.zip"
           cp build-emscripten/scummvm.html build-emscripten/index.html
@@ -66,5 +65,6 @@ jobs:
       - name: Deploy Demo 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: gh-pages # The branch the action should deploy to.
+          branch: main # The branch the action should deploy to.
+          repository-name: neuromancer/neuromancer.github.io 
           folder: scummvm/build-emscripten # The folder the action should deploy.
