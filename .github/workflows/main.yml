@@ -66,5 +66,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: main # The branch the action should deploy to.
-          repository-name: neuromancer/neuromancer.github.io 
+          repository-name: neuromancer/neuromancer.github.io
+          token: ${{ secrets.PAT }} 
           folder: scummvm/build-emscripten # The folder the action should deploy.
