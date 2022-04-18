@@ -61,12 +61,12 @@ jobs:
             ./scummvm-to-rebase/config.mk
             ./scummvm-to-rebase/dists/emscripten/emsdk-3.1.6
             ./scummvm-to-rebase/dists/emscripten/libs 
-            ./scummvm-to-rebase/**/*.o
-            ./scummvm-to-rebase/**/**/*.o
-            ./scummvm-to-rebase/**/**/**/*.o
-            ./scummvm-to-rebase/**/**/**/**/*.o
-            ./scummvm-to-rebase/**/**/**/**/**/*.o
-            ./scummvm-to-rebase/**/**/**/**/**/**/*.o
+            ./scummvm-to-rebase/**/*.[o,a]
+            ./scummvm-to-rebase/**/**/*.[o,a]
+            ./scummvm-to-rebase/**/**/**/*.[o,a]
+            ./scummvm-to-rebase/**/**/**/**/*.[o,a]
+            ./scummvm-to-rebase/**/**/**/**/**/*.[o,a]
+            ./scummvm-to-rebase/**/**/**/**/**/**/*.[o,a]
           key: scummvm-cache
 
       - name: Build ScummVM
