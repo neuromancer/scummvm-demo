@@ -54,6 +54,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
+            ./scummvm-to-rebase/engines/engines.mk
+            ./scummvm-to-rebase/engines/detection_table.h
+            ./scummvm-to-rebase/engines/plugins_table.h
+            ./scummvm-to-rebase/config.h
+            ./scummvm-to-rebase/config.mk
             ./scummvm-to-rebase/dists/emscripten/emsdk-3.1.6
             ./scummvm-to-rebase/dists/emscripten/libs 
             ./scummvm-to-rebase/**/*.o
@@ -69,7 +74,6 @@ jobs:
           cd scummvm-to-rebase
           cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat 
           ./dists/emscripten/build.sh build --verbose  --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-dynamic=hypno --bundle-games=,sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip"
-          cp build-emscripten/scummvm.html build-emscripten/index.html
           cd ..
           cp -R scummvm-to-rebase/build-emscripten scummvm
 
