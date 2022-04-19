@@ -28,14 +28,9 @@ jobs:
         with:
           submodules: true
  
-      - name: Checkout icons 🛎️
-        uses: actions/checkout@v2
-        with:
-         repository: scummvm/scummvm-icons
-         path: scummvm-icons
-
-      - name: Build ScummVM icons 🔧
+      - name: Checkout and build ScummVM icons 🔧
         run: |
+          git clone https://github.com/scummvm/scummvm-icons
           cd scummvm-icons
           python3 gen-set.py
           cd ..
