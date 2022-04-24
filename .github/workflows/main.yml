@@ -69,7 +69,8 @@ jobs:
         run: |
           cd scummvm-to-rebase
           cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat
-          ./dists/emscripten/build.sh build --verbose --enable-optimizations --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-dynamic=private --enable-engine-dynamic=hypno --bundle-games=,sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-es.zip"
+          ./dists/emscripten/build.sh build --verbose --enable-optimizations --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-dynamic=private --enable-engine-dynamic=hypno --bundle-games=sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-ni-demo-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-es.zip",
+
 
           cd ..
           cp -R scummvm-to-rebase/build-emscripten scummvm
