@@ -32,7 +32,7 @@ jobs:
         run: |
           git clone https://github.com/scummvm/scummvm-icons
           cd scummvm-icons
-          python3 gen-set.py
+          #python3 gen-set.py
           cd ..
 
       - name: Rebase ScummVM 🔧
@@ -68,7 +68,7 @@ jobs:
       - name: Build ScummVM
         run: |
           cd scummvm-to-rebase
-          cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat
+          #cp ../scummvm-icons/gui-icons-*.dat ./gui/themes/gui-icons.dat
           ./dists/emscripten/build.sh build --verbose --enable-optimizations --enable-plugins --disable-tinygl --disable-all-engines --enable-engine-dynamic=private --enable-engine-dynamic=hypno --bundle-games=sinistersix,"https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-ni-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-ni-demo2-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo1-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo2-en.zip","https://downloads.scummvm.org/frs/demos/hypno/wetlands-dos-demo3-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-en.zip","https://downloads.scummvm.org/frs/demos/private/private-eye-demo-es.zip",
 
 
